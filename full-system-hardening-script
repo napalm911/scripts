@@ -1,0 +1,15 @@
+#!/bin/bash
+# Educational Proof of Concept: Full System Hardening Script
+# WARNING: Execute only on systems you administrate.
+#
+# This script disables insecure services and configures a basic firewall.
+echo "Disabling unnecessary services (example: telnet)..."
+sudo systemctl disable telnet.socket
+sudo systemctl stop telnet.socket
+
+echo "Configuring basic firewall rules..."
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
+echo "System hardening complete. Please review and adjust settings as needed."
